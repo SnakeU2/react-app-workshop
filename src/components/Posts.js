@@ -1,64 +1,16 @@
 import React, {Component} from 'react';
-import InstaService from "../services/instacervice";
+
 import User from "./User";
-import ErrorMessage from "./ErrorMessage";
+
 
 
 export default class Posts extends Component
 {
-    InstaService = new InstaService();
-
-    state = {
-
-        posts: [],
-        error: false
-
-    }
-
-    componentDidMount(){
-
-        this.updatePosts();
     
-    }
-
-    updatePosts() {
-
-        this.InstaService.getAllPosts()
-        .then(this.onPostsLoaded)
-        .catch(this.onError)
-
-    }
-
-    onPostsLoaded = (posts) => {
-
-        this.setState({
-
-            posts,
-            error: false
-
-        })
-
-    }
-
-    onError = (err) => {
-
-        this.setState({
-            error: true
-        })
-
-    }
 
     render(){
 
-        const {error, posts} = this.state;
-
-        if(error) {
-
-                return <ErrorMessage/>
-            
-        }
-
-        const items = this.renderItems(posts);
+        const items = this.renderItems(this.props.posts);
 
         return(
             

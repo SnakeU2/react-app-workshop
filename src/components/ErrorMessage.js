@@ -5,9 +5,9 @@ const ErrorMessage = () => {
 
     return (
 
-        <>
+        <div className="container feed">
             <img src={img} alt="error"></img>
-        </>
+        </div>
     )
 
 }
